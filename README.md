@@ -10,9 +10,9 @@ permalink: /
   </video>
 </div>
 
-Artificial Neural Networks (ANNs) trained with backpropagation are biologically unrealistic but exceptionally adept at 'connecting the dots' in data. These networks are simpler to design, train, and test compared to biological brains, allowing for detailed examination down to each neuron and weight -- a feat that is implausible with biological brains. A growing trend within computational neuroscience is to train ANNs on simulated tasks to 'connect the dots', and then to compare their mechanisms with those of biological brains.
+Artificial Neural Networks (ANNs) trained with backpropagation, despite being biologically unrealistic, are exceptionally straightforward to configure, train, and evaluate, while allowing for exact examination of each neuron and weight. A growing trend within computational neuroscience is thus to train ANNs on simulated tasks to 'connect the dots', and then to compare their neuronal traits with those of biological brains to derive the underlying mechanisms of the brain.
 
-This project is an implemention of Recurrent Neural Networks (RNNs) and Multilayer Perceptrons (MLPs) that are designed for versatile applications in modeling various brain structures and biological constraints.
+This project implements Recurrent Neural Networks (RNNs) and Multilayer Perceptrons (MLPs) designed for a parametrized and granular control over network modularity, synaptic plasticity, and other constraints to enable biologically feasible modeling of brain regions.
 
 #### Acknowledgement
 Immense thanks to [Dr. Christopher J. Cueva](https://www.metaconscious.org/author/chris-cueva/) for his mentorship in developing this project. This project can't be done without his invaluable help.

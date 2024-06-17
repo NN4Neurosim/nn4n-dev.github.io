@@ -1,13 +1,12 @@
 ---
 title: Installation
 author: Zhaoze Wang
-date: 2024-05-11
-category: Quickstart
+date: 2024-06-14
+category: install
 layout: post
 order: 1
 ---
 
-## Install
 ### Install using pip
 ```
 pip install nn4n

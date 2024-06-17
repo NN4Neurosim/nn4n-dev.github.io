@@ -19,10 +19,10 @@ remote_theme: sighingnow/jekyll-gitbook
 toc:
   enabled: true
   h_min: 1
-  h_max: 2
+  h_max: 3
 
 # customize the link favicon in header, will be {{site.baseurl}}/{{site.favicon_path}}
-favicon_path:     /assets/gitbook/images/favicon.ico
+favicon_path:     assets/favicon.ico
 
 # markdown render engine.
 markdown:         kramdown
@@ -50,14 +50,23 @@ exclude:
   - _drafts
 
 collections:
-  install:
+  collection_1:
     output: true
-    permalink: /:collection/:path/
-  docs:
+    permalink: /install/:path/
+  collection_2:
     output: true
-    permalink: /:collection/:path/
+    permalink: /rnn/:path/
+  collection_3:
+    output: true
+    permalink: /mlp/:path/
+  collection_4:
+    output: true
+    permalink: /criterion/:path/
+  collection_5:
+    output: true
+    permalink: /logs/:path/
 
-page_width: 800px
+page_width: 900px
 
 destination:      ./_site
 incremental:      true
