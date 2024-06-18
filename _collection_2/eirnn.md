@@ -1,13 +1,12 @@
 ---
-title: Excitatory-Inhibitory RNN
+title: 'Example: Excitatory-Inhibitory RNN'
 author: Zhaoze Wang
 date: 2024-06-16
 category: docs
 layout: post
-order: 4
+order: 11
 ---
 
-To train a Excitatory-Inhibitory Constrained RNN (EIRNN)
 ```python
 import nn4n
 from nn4n.model import CTRNN

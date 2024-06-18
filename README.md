@@ -14,5 +14,13 @@ Artificial Neural Networks (ANNs) trained with backpropagation, despite being bi
 
 This project implements Recurrent Neural Networks (RNNs) and Multilayer Perceptrons (MLPs) designed for a parametrized and granular control over network modularity, synaptic plasticity, and other constraints to enable biologically feasible modeling of brain regions.
 
+[GitHub Repository](https://github.com/NN4Neurosim/nn4n)
+
 #### Acknowledgement
 Immense thanks to [Dr. Christopher J. Cueva](https://www.metaconscious.org/author/chris-cueva/) for his mentorship in developing this project. This project can't be done without his invaluable help.
+
+#### License
+This project is licensed under the terms of the MIT license. See the [LICENSE](https://opensource.mit.edu/license) file for details.
+
+#### Template
+The project documentation is based on [Jekyll](https://jekyllrb.com/) and uses [Jekyll Gitbook](https://github.com/sighingnow/jekyll-gitbook) theme developed by [sighingnow](https://github.com/sighingnow).

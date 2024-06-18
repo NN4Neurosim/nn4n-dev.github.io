@@ -7,18 +7,18 @@ layout: post
 order: 1
 ---
 
-### Install using pip
+# Install using pip
 ```
 pip install nn4n
 ```
 
-### Install from GitHub
+# Install from Source
 #### Clone the repository
 ```
-git clone https://github.com/zhaozewang/NN4Neurosci.git
+git clone https://github.com/NN4Neurosim/nn4n.git
 ```
 #### Navigate to the NN4Neurosci directory
 ```
-cd NN4Neurosci/
+cd nn4n/
 pip install -e .
 ```

@@ -1,13 +1,12 @@
 ---
-title: Vanilla RNN
+title: 'Example: Vanilla RNN'
 author: Zhaoze Wang
 date: 2024-06-16
 category: docs
 layout: post
-order: 3
+order: 10
 ---
 
-## Vanilla RNN
 ```python
 import nn4n
 from nn4n.model import CTRNN

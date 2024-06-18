@@ -9,7 +9,7 @@ description: >
 version:          1.1.0
 gitbook_version:  1.0.0
 
-url:              'https://sighingnow.github.io'
+url:              'https://nn4neurosim.github.io'
 baseurl:          ''
 rss:              RSS
 
@@ -53,18 +53,27 @@ collections:
   collection_1:
     output: true
     permalink: /install/:path/
+    name: "Installation Guides"
   collection_2:
     output: true
     permalink: /rnn/:path/
+    name: "Recurrent Neural Networks"
   collection_3:
     output: true
     permalink: /mlp/:path/
+    name: "Multi-Layer Perceptrons"
   collection_4:
     output: true
-    permalink: /criterion/:path/
+    permalink: /constraint/:path/
+    name: "Constraints"
   collection_5:
     output: true
+    permalink: /mask/:path/
+    name: "Masks"
+  collection_6:
+    output: true
     permalink: /logs/:path/
+    name: "Logs"
 
 page_width: 900px
 
