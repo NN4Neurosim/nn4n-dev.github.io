@@ -159,9 +159,11 @@
 
 .book.font-family-0 {
     font-family: Georgia, serif;
+    font-feature-settings: "calt" 0, "liga" 0, "dlig" 0, "kern" 0;
 }
 .book.font-family-1 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-feature-settings: "calt" 0, "liga" 0, "dlig" 0, "kern" 0;
 }
 
 /* Render wide tables */

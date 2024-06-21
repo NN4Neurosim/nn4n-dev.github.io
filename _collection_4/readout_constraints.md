@@ -13,4 +13,6 @@ ReadoutLayer constraint. The ReadoutLayer sparsity loss function is defined as:
 
 $$ \mathcal{L}_{out} = \frac{\lambda_{out}}{N_{out} N_{hid}} ||W_{out}||_F^2 $$
 
-- $N_{out}$: number of output neurons.
+- $ N_{out} $: number of readout neurons.
+- $ N_{hid} $: number of hidden neurons.
+- $ \textbf{W}_{out} $: readout layer weight matrix.

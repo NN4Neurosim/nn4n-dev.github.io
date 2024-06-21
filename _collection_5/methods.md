@@ -50,7 +50,7 @@ Output:
 </p>
 
 
-# mask.masks( )
+# mask.get_masks( )
 ##### Description
 Return layer masks in a list.
 
@@ -68,7 +68,7 @@ params = {
     "output_dim": 2,
 }
 multiarea = MultiArea(**params)
-multiarea.masks()
+multiarea.get_masks()
 ```
 
 Output

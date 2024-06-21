@@ -12,13 +12,18 @@ Randomly inject input to the network. Neurons' dynamic receiving input will be h
 
 ## Parameters
 
+### Inherited Parameters
+This class inherits all parameters from `BaseStruct`. See [BaseStruct]({{ site.baseurl }}/mask/base_struct) for more details.
+
+### Other Parameters
+
 <div class="table-wrapper" markdown="block">
 
 | Parameter                     | Default                 | Type                       | Description                                |
 |:------------------------------|:-----------------------:|:--------------------------:|:-------------------------------------------|
 | input_spar                    | 1                       | `float`                    | Input sparsity. Percentage of neurons that receive input.             |
-| readout_spars                 | 1                       | `float`                    | Readout sparsity. Percentage of neurons that readout from.              |
+| readout_spar                  | 1                       | `float`                    | Readout sparsity. Percentage of neurons that readout from.              |
 | hidden_spar                   | 1                       | `float`                    | Hidden sparsity. Percentage of edges that are non-zero.                |
-| overlap                       | `True`                  | `boolean`                  | Whether to allow overlap between input and readout neurons.            |
+| overlap                       | `True`                  | `boolean`                  | Whether a neuron can receive input and readout from.              |
 
 </div>

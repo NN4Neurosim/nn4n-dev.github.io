@@ -8,37 +8,10 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
     var fontState;
 
     // Default themes
-    var THEMES = [
-        {
-            config: 'white',
-            text: 'White',
-            id: 0
-        },
-        {
-            config: 'sepia',
-            text: 'Sepia',
-            id: 1
-        },
-        {
-            config: 'night',
-            text: 'Night',
-            id: 2
-        }
-    ];
+    var THEMES = [];
 
     // Default font families
-    var FAMILIES = [
-        {
-            config: 'serif',
-            text: 'Serif',
-            id: 0
-        },
-        {
-            config: 'sans',
-            text: 'Sans',
-            id: 1
-        }
-    ];
+    var FAMILIES = [];
 
     // Return configured themes
     function getThemes() {
@@ -157,7 +130,7 @@ require(['gitbook', 'jquery'], function(gitbook, $) {
 
         $book[0].className = $book[0].className.replace(/\bfont-\S+/g, '');
         $book.addClass('font-size-'+fontState.size);
-        $book.addClass('font-family-'+fontState.family);
+        // $book.addClass('font-family-'+fontState.family);
 
         if(fontState.theme !== 0) {
             $book[0].className = $book[0].className.replace(/\bcolor-theme-\S+/g, '');

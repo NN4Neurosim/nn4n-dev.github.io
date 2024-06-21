@@ -11,7 +11,7 @@ permalink: /
 </div>
 
 <p style="display: flex; align-items: center;">
-  <img src="{{ '/assets/images/icons/github.png' | relative love }}" width="20" alt="GitHub">
+  <img src="{{ '/assets/images/icons/github.png' | relative_url }}" width="20" alt="GitHub">
   <a href="https://github.com/NN4Neurosim/nn4n" style="margin-left: 5px; color: #333; text-decoration: underline">GitHub Repository</a>
 </p>
 

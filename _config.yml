@@ -58,10 +58,10 @@ collections:
     output: true
     permalink: /rnn/:path/
     name: "Recurrent Neural Networks"
-  collection_3:
-    output: true
-    permalink: /mlp/:path/
-    name: "Multi-Layer Perceptrons"
+  # collection_3:
+  #   output: true
+  #   permalink: /mlp/:path/
+  #   name: "Multi-Layer Perceptrons"
   collection_4:
     output: true
     permalink: /constraint/:path/

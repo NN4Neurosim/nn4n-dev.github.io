@@ -7,19 +7,11 @@ layout: post
 order: 2
 ---
 
-## Initialize a Continuous-Time RNN
-```python
-import torch
-from nn4n.model import CTRNN
-
-rnn = CTRNN(input_dim=1, hidden_size=10, output_dim=1)
-optimizer = torch.optim.Adam(rnn.parameters(), lr=0.001)
-```
-
-
 ## Define a Task
 The input/output signals to train the RNN can be any time series data. Let $X$ be the input signal and $Y$ be the output signal. $X$ should of shape `(n_timesteps, batch_size, input_dim)` and $Y$ should be of shape `(n_timesteps, batch_size, output_dim)`. These signals could be representations of many cognitive tasks, such as working memory, decision making, or motor control, etc. Here we use a simple sin wave as an example.
+
 ```python
+import torch
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -37,6 +29,14 @@ plt.show()
 <p align="center">
   <img src="{{ '/assets/images/results/sin_wave.png' | relative_url }}" width="400" alt="Sin Wave">
 </p>
+
+## Initialize a Continuous-Time RNN
+```python
+from nn4n.model import CTRNN
+
+rnn = CTRNN(input_dim=1, hidden_size=10, output_dim=1)
+optimizer = torch.optim.Adam(rnn.parameters(), lr=0.001)
+```
 
 ## Train the RNN
 ```python

@@ -206,3 +206,30 @@ for _ in range(100):
     loss.backward()
     optimizer.step()
 ```
+
+
+# CTRNN.layers
+
+##### Description
+Get a list of the network layers.
+
+##### Returns
+> `layers`: (list) A list of the network layers.
+
+##### Usage
+```python
+from nn4n.model import CTRNN
+
+ctrnn = CTRNN()
+layers = ctrnn.layers
+
+for layer in layers:
+    print(layer)
+```
+
+##### Output
+```
+LinearLayer()
+HiddenLayer()
+LinearLayer()
+```

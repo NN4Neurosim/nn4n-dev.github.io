@@ -17,7 +17,7 @@ pip install nn4n
 ```
 git clone https://github.com/NN4Neurosim/nn4n.git
 ```
-#### Navigate to the NN4Neurosci directory
+#### Navigate to the project directory
 ```
 cd nn4n/
 pip install -e .

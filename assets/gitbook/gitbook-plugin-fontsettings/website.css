@@ -62,22 +62,24 @@
   font-size: 1.2rem;
 }
 .book.font-size-1 .book-body .page-inner section {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 .book.font-size-2 .book-body .page-inner section {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 .book.font-size-3 .book-body .page-inner section {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
 }
 .book.font-size-4 .book-body .page-inner section {
-  font-size: 4rem;
+  font-size: 3.2rem;
 }
 .book.font-family-0 {
   font-family: Georgia, serif;
+  font-feature-settings: "calt" 0, "liga" 0, "dlig" 0, "kern" 0;
 }
 .book.font-family-1 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-feature-settings: "calt" 0, "liga" 0, "dlig" 0, "kern" 0;
 }
 .book.color-theme-1 .book-body .page-wrapper .page-inner section.normal {
   color: #704214;

@@ -19,6 +19,10 @@ This will generate a multi-area RNN without E/I constraints. Therefore, by defau
 
 ## Parameters
 
+### Inherited Parameters
+This class inherits all parameters from `BaseStruct`. See [BaseStruct]({{ site.baseurl }}/mask/base_struct) for more details.
+
+### Other Parameters
 <div class="table-wrapper" markdown="block">
 
 | Parameter | Default | Type | Description |
@@ -53,4 +57,60 @@ $W$ may not matter if your connectivity matrix is symmetric. But if it's not, yo
 <p align="center">
 <img src="{{ '/assets/images/basics/Multi_Area.png' | relative_url }}" width="600">
 </p>
-<br>
+
+
+## Example
+
+```python
+from nn4n.mask import MultiArea
+
+area_connectivities = np.array([
+    [1.0, 0.1, 0.0, 0.0],
+    [0.1, 1.0, 0.1, 0.0],
+    [0.0, 0.1, 1.0, 0.1],
+    [0.0, 0.0, 0.1, 1.0],
+])
+
+mask_params = {
+    "n_areas": 4,
+    "area_connectivities": area_connectivities,
+    "input_areas": [0],
+    "readout_areas": [2, 3],
+    "dims": [1, 100, 1],
+}
+
+network_mask = MultiArea(**mask_params)
+network_mask.plot_masks()
+```
+
+###### Output:
+<p>
+<img src="{{ '/assets/images/mask/results/multi_area_input_mask.png' | relative_url }}" width="480">
+</p>
+<p>
+<img src="{{ '/assets/images/mask/results/multi_area_hidden_mask.png' | relative_url }}" width="480">
+</p>
+<p>
+<img src="{{ '/assets/images/mask/results/multi_area_output_mask.png' | relative_url }}" width="480">
+</p>
+
+##### Use It as a Sparsity Mask
+```python
+from nn4n.model import CTRNN
+
+rnn = CTRNN(sparsity_masks=network_struct.get_masks())
+layer = rnn.layers[1]
+optimizer = torch.optim.Adam(rnn.parameters(), lr=0.001)
+rnn.plot_layers()
+```
+
+###### Output:
+<p>
+<img src="{{ '/assets/images/mask/results/multi_area_input_weight.png' | relative_url }}" width="500">
+</p>
+<p>
+<img src="{{ '/assets/images/mask/results/multi_area_hidden_weight.png' | relative_url }}" width="500">
+</p>
+<p>
+<img src="{{ '/assets/images/mask/results/multi_area_output_weight.png' | relative_url }}" width="500">
+</p>

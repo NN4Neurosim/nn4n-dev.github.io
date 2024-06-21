@@ -17,6 +17,10 @@ This class is a child class of `MultiArea`. It will generate a multi-area RNN wi
 
 ## Parameters
 
+### Inherited Parameters
+This class inherits all parameters from `MultiArea`. See [MultiArea]({{ site.baseurl }}/mask/multi_area) for more details.
+
+### Other Parameters
 <div class="table-wrapper" markdown="block">
 
 | Parameter                     | Default                 | Type                       | Description                                |
