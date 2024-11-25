@@ -28,7 +28,7 @@ params = {
     "area_connectivities": area_connectivities,
     "hidden_size": 100,
     "input_dim": 2,
-    "output_dim": 2,
+    "readout_dim": 2,
     "input_areas": [0],
     "readout_areas": [1],
 }
@@ -65,7 +65,7 @@ from nn4n.mask import MultiArea
 params = {
     "hidden_size": 100,
     "input_dim": 2,
-    "output_dim": 2,
+    "readout_dim": 2,
 }
 multiarea = MultiArea(**params)
 multiarea.get_masks()
@@ -106,7 +106,7 @@ The first np.ndarray is the input mask, the second is the hidden mask, and the t
 ```
 
 
-# mask.get_readout_idx( )
+# mask.get_readout_indices( )
 ##### Description
 
 Get the indices of the neurons that are being read out from.
@@ -122,10 +122,10 @@ from nn4n.mask import MultiArea
 params = {
     "hidden_size": 100,
     "input_dim": 2,
-    "output_dim": 2,
+    "readout_dim": 2,
 }
 multiarea = MultiArea(**params)
-multiarea.get_readout_idx()
+multiarea.get_readout_indices()
 ```
 
 Output
@@ -138,7 +138,7 @@ array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,
        85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99])
 ```
 
-# mask.get_input_idx( )
+# mask.get_input_indices( )
 ##### Description
 Get the indices of the neurons that receive inputs.
 
@@ -153,10 +153,10 @@ from nn4n.mask import MultiArea
 params = {
     "hidden_size": 100,
     "input_dim": 2,
-    "output_dim": 2,
+    "readout_dim": 2,
 }
 multiarea = MultiArea(**params)
-multiarea.get_input_idx()
+multiarea.get_input_indices()
 ```
 
 Output
@@ -170,7 +170,7 @@ array([ 0,  1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16,
 ```
 
 
-# mask.get_non_input_idx( )
+# mask.get_non_input_indices( )
 ##### Description
 
 Get the indices of the neurons that receive inputs.
@@ -179,7 +179,7 @@ Get the indices of the neurons that receive inputs.
 > `non_input_idx`: (np.ndarray) The indices of neurons that don't receive inputs.
 
 ##### Usage
-The example below will create a `MultiArea` object with 3 areas, where the first area is the input area. The `get_non_input_idx()` method will return indices of neurons in area 2 and 3, as they don't receive inputs.
+The example below will create a `MultiArea` object with 3 areas, where the first area is the input area. The `get_non_input_indices()` method will return indices of neurons in area 2 and 3, as they don't receive inputs.
 
 ```python
 import torch
@@ -190,12 +190,12 @@ params = {
     "area_connectivities": [0.1, 0.1],
     "hidden_size": 90,
     "input_dim": 1,
-    "output_dim": 1,
+    "readout_dim": 1,
     "input_areas": [0],
     "readout_areas": [2],
 }
 multiarea = MultiArea(**params)
-multiarea.get_non_input_idx()
+multiarea.get_non_input_indices()
 ```
 
 Output
@@ -222,7 +222,7 @@ from nn4n.mask import MultiArea
 params = {
     "hidden_size": 100,
     "input_dim": 2,
-    "output_dim": 2,
+    "readout_dim": 2,
 }
 multiarea = MultiArea(**params)
 multiarea.get_areas()
@@ -234,7 +234,7 @@ Output
 ```
 
 
-# mask.get_area_idx( )
+# mask.get_area_indices( )
 ##### Description
 Get the node indices of a specific area.
 
@@ -252,11 +252,11 @@ from nn4n.mask import MultiArea
 params = {
     "hidden_size": 100,
     "input_dim": 2,
-    "output_dim": 2,
+    "readout_dim": 2,
 }
 multiarea = MultiArea(**params)
 multiarea.get_areas()  # ['area_1', 'area_2']
-multiarea.get_area_idx('area_1')
+multiarea.get_area_indices('area_1')
 ```
 
 Output

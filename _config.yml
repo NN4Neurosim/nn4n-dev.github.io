@@ -52,8 +52,8 @@ exclude:
 collections:
   collection_1:
     output: true
-    permalink: /install/:path/
-    name: "Installation Guides"
+    permalink: /intro/:path/
+    name: "Introduction"
   collection_2:
     output: true
     permalink: /rnn/:path/

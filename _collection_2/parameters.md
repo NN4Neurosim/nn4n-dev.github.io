@@ -13,7 +13,6 @@ These parameters primarily determine the structure of the network. It is recomme
 <div class="table-wrapper" markdown="block">
 
 | Parameter | Default | Type | Description |
-| Parameter | Default | Type | Description |
 |:-:|:-:|:-:|:-:|
 | dims | [1, 100, 1] | `list` | Dimensions of the network |
 | activation | 'relu' | `string` | Activation function, could be 'relu', 'tanh', 'sigmoid', or 'retanh' |

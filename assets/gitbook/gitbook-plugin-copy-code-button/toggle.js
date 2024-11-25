@@ -56,7 +56,7 @@ require(["gitbook", "jquery"], function (gitbook, $) {
             $(this).css("position", "relative");
 
             var $copyCodeButton = $("<div class='copy-code-button'>Copy</div>");
-            $copyCodeButton.css({ "padding": "8px 10px", "position": "absolute", "top": "8px", "right": "8px", "background-color": "#9da8b3", "color": "white", "border-radius": "5px", "-moz-border-radius": "5px", "-webkit-border-radius": "5px", "border": "1px solid #CCCCCC", "font-size": "1.2rem", "text-align": "center", "line-height": "1.2rem", "cursor": "pointer" });
+            $copyCodeButton.css({ "padding": "8px 10px", "position": "absolute", "top": "8px", "right": "8px", "background-color": "#9da8b3", "color": "white", "border-radius": "5px", "-moz-border-radius": "5px", "-webkit-border-radius": "5px", "border": "1px solid #CCCCCC", "font-size": "1rem", "text-align": "center", "line-height": "0.9rem", "cursor": "pointer" });
             $copyCodeButton.click(function () {
                 var $codeContainer = $(this).siblings("code");
                 if ($codeContainer) {

@@ -4,7 +4,7 @@ author: Zhaoze Wang
 date: 2024-06-14
 category: install
 layout: post
-order: 1
+order: 2
 ---
 
 # Install using pip

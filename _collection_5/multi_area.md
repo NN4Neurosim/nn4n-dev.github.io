@@ -42,7 +42,7 @@ This class inherits all parameters from `BaseStruct`. See [BaseStruct]({{ site.b
 | node_assignment          | `list`                     | Nodes area assignment                      |
 | hidden_size              | `int`                      | Number of nodes in the HiddenLayer         |
 | input_dim                | `int`                      | Input dimension                            |
-| output_dim               | `int`                      | Output dimension                           |
+| readout_dim               | `int`                      | Output dimension                           |
 | area_connectivities      | `np.ndarray`               | Area-to-area connectivity matrix. If it is a list in params, it will be transformed into a numpy matrix after initialization                   |
 
 </div>
@@ -91,7 +91,7 @@ network_mask.plot_masks()
 <img src="{{ '/assets/images/mask/results/multi_area_hidden_mask.png' | relative_url }}" width="480">
 </p>
 <p>
-<img src="{{ '/assets/images/mask/results/multi_area_output_mask.png' | relative_url }}" width="480">
+<img src="{{ '/assets/images/mask/results/multi_area_readout_mask.png' | relative_url }}" width="480">
 </p>
 
 ##### Use It as a Sparsity Mask
@@ -112,5 +112,5 @@ rnn.plot_layers()
 <img src="{{ '/assets/images/mask/results/multi_area_hidden_weight.png' | relative_url }}" width="500">
 </p>
 <p>
-<img src="{{ '/assets/images/mask/results/multi_area_output_weight.png' | relative_url }}" width="500">
+<img src="{{ '/assets/images/mask/results/multi_area_readout_weight.png' | relative_url }}" width="500">
 </p>

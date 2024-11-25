@@ -30,3 +30,4 @@ The connectivity matrices between different layers are core to the modeling of t
 - [MultiArea]({{ site.baseurl }}/mask/multi_area)
 - [MultiAreaEI]({{ site.baseurl }}/mask/multi_area_ei)
 - [RandomInput]({{ site.baseurl }}/mask/random_input)
+- [MultiIO]({{ site.baseurl }}/mask/multi_io)
