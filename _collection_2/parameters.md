@@ -13,8 +13,9 @@ These parameters primarily determine the structure of the network. It is recomme
 <div class="table-wrapper" markdown="block">
 
 | Parameter | Default | Type | Description |
+| Parameter | Default | Type | Description |
 |:-:|:-:|:-:|:-:|
-| dims | [1, 100, 1] | `list` | Dimensions of the network, must be a list of three integers [input_dim, hidden_size, output_dim] |
+| dims | [1, 100, 1] | `list` | Dimensions of the network |
 | activation | 'relu' | `string` | Activation function, could be 'relu', 'tanh', 'sigmoid', or 'retanh' |
 | biases | `None` | `None`, `string`, or `list` | Use bias or not for each layer. A single value is broadcasted to a list of three values, which can be `None` (not using bias); 'zero' or 0 (bias initialized to 0 but could change during training); 'normal' (normal distribution), or ;'uniform' (bias initialized from a uniform distribution). If a list of three values is passed, each can be as described or a numpy array/torch tensor specifying the bias. |
 | weights | 'uniform' | `string` or `list` | Distribution of weights for each layer. A single string is broadcasted to a list of three strings. Possible values: 'normal' (weights initialized from a normal distribution), 'uniform' (weights initialized from a uniform distribution). If a list of three values is passed, each can be as described or a numpy array/torch tensor specifying the weights. |
@@ -39,9 +40,17 @@ These parameters primarily determine the training process of the network. The `t
 
 # Mask Parameters
 When modeling the brain with neural networks, both the connections between neurons (synapses) and the neuron's non-linear activation functions are crucial components. Synapses, in particular, provide numerous degrees of freedom within the network. The connectivity matrix, for example, determines the network's structure, while various properties of synapses—such as their plasticity, whether they are excitatory or inhibitory, their strength, and the potential for new synapses to form—add layers of complexity and control. Here, we use masks to manage these characteristics.
+# Mask Parameters
+When modeling the brain with neural networks, both the connections between neurons (synapses) and the neuron's non-linear activation functions are crucial components. Synapses, in particular, provide numerous degrees of freedom within the network. The connectivity matrix, for example, determines the network's structure, while various properties of synapses—such as their plasticity, whether they are excitatory or inhibitory, their strength, and the potential for new synapses to form—add layers of complexity and control. Here, we use masks to manage these characteristics.
 
 <div class="table-wrapper" markdown="block">
 
+| Parameter             | Default | Type                     | Description |
+|:-:                    |:-:      |:-:                       |:-:          |
+| sparsity_masks        | None    | `None` or `list`         | Use `sparsity_masks` or not. A single `None` will be broadcasted to a list of three `None`s. If a list of three values is passed, each value can be either `None` or a numpy array/torch tensor specifying the `sparsity_masks`. |
+| ei_masks              | None    | `None` or `list`         | Use `ei_masks` or not. A single `None` will be broadcasted to a list of three `None`s. If a list of three values is passed, each value can be either `None` or a numpy array/torch tensor specifying the `ei_masks`. |
+| plasticity_masks      | None    | `None` or `list`         | Use `plasticity_masks` or not. A single `None` will be broadcasted to a list of three `None`s. If a list of three values is passed, each value can be either `None` or a numpy array/torch tensor specifying the `plasticity_masks`. |
+| synapse_growth_masks  | None    | `None` or `list`         | Use `synapse_growth_masks` or not. A single `None` will be broadcasted to a list of three `None`s. If a list of three values is passed, each value can be either `None` or a numpy array/torch tensor that directly specifies the probability of growing a synapse at the selected location if there is no synapse. |
 | Parameter             | Default | Type                     | Description |
 |:-:                    |:-:      |:-:                       |:-:          |
 | sparsity_masks        | None    | `None` or `list`         | Use `sparsity_masks` or not. A single `None` will be broadcasted to a list of three `None`s. If a list of three values is passed, each value can be either `None` or a numpy array/torch tensor specifying the `sparsity_masks`. |
@@ -102,10 +111,14 @@ Whether a neuron can connect to itself. This feature is enforced along with the 
 | Method | Description |
 |:-:|:-:|
 | [`forward()`]({{ site.baseurl }}/rnn/methods/#ctrnnforward-) | Forward pass. |
+| [`forward()`]({{ site.baseurl }}/rnn/methods/#ctrnnforward-) | Forward pass. |
 | [`save()`]({{ site.baseurl }}/rnn/methods/#ctrnnsave-) | Save the network to a given path. |
 | [`load()`]({{ site.baseurl }}/rnn/methods/#ctrnnload-) | Load the network from a given path. |
 | [`print_layers()`]({{ site.baseurl }}/rnn/methods/#ctrnnprint_layers-) | Print the network architecture and layer-by-layer specifications. |
+| [`print_layers()`]({{ site.baseurl }}/rnn/methods/#ctrnnprint_layers-) | Print the network architecture and layer-by-layer specifications. |
 | [`train()`]({{ site.baseurl }}/rnn/methods/#ctrnntrain-) | Set the network to training mode, training will be performed and constraints will be enforced. Also, during training, the recurrent noises (preact_noise and postact_noise) won't be added. |
+| [`eval()`]({{ site.baseurl }}/rnn/methods/#ctrnneval-) | Set the network to evaluation mode, no training will be performed and no constraints will be enforced. |
+| [`layers`]({{ site.baseurl }}/rnn/methods/#ctrnnlayers) | Return a list of the network layers. |
 | [`eval()`]({{ site.baseurl }}/rnn/methods/#ctrnneval-) | Set the network to evaluation mode, no training will be performed and no constraints will be enforced. |
 | [`layers`]({{ site.baseurl }}/rnn/methods/#ctrnnlayers) | Return a list of the network layers. |
 
