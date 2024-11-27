@@ -1,5 +1,5 @@
 ---
-title: RandomInput
+title: mask.RandomInput
 author: Zhaoze Wang
 date: 2024-06-16
 category: docs

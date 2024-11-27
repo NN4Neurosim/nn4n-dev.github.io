@@ -1,12 +1,11 @@
 ---
-title: MultiArea
+title: mask.MultiArea
 author: Zhaoze Wang
 date: 2024-06-16
 category: docs
 layout: post
 order: 3
 ---
-
 
 ## Description
 
@@ -19,33 +18,126 @@ This will generate a multi-area RNN without E/I constraints. Therefore, by defau
 
 ## Parameters
 
-### Inherited Parameters
-This class inherits all parameters from `BaseStruct`. See [BaseStruct]({{ site.baseurl }}/mask/base_struct) for more details.
+- **`n_areas`** *(int or list, default: `2`)*:  
+  The number of areas in the network. Can be an integer (equal-sized areas) or a list specifying the size of each area.  
+  - If an integer, the `hidden_size` must be divisible by `n_areas`.
+  - If a list, the sum of its elements must equal `hidden_size`.
 
-### Other Parameters
-<div class="table-wrapper" markdown="block">
+- **`area_connectivities`** *(list or np.ndarray, default: `[0.1, 0.1]`)*:  
+  Defines the connectivity between areas.  
+  - If a list: Can have length 2 or 3:
+    - `[lower_triangle, upper_triangle, diagonal]` (if length 3).
+    - `[lower_triangle, upper_triangle]` (diagonal defaults to `1`).
+  - If an np.ndarray: Must be a square matrix of shape `(n_areas, n_areas)`.
 
-| Parameter | Default | Type | Description |
-|:---------------------:|:-------------:|:------------------:|:-------------------------------------------:|
-| n_areas              | 2            | `int` or `list`            | Number of areas.<br>- If `n_areas` is an integer, `n_areas` must be a divisor of `hidden_size`. It will divide the HiddenLayer into three equal size regions.<br>- If `n_areas` is a list, it must sums up to `hidden_size`, where each element in the list denote the number of neurons in that area.   |
-| area_connectivities  | [0.1, 0.1]   |`list` or `np.ndarray`     | Area-to-area connection connectivity. Entries must between `[0,1]`<br>- If its a list of two elements, the first element is the forward connectivity, and the second is the backward connectivity. The within-area connectivity will be 1.<br>- If its a list of three elements, the last element will be the within-area connectivity.<br>- If `area_connectivities` is an `np.ndarray`, it must be of shape (`n_areas`, `n_areas`). See [forward/backward specifications](#forward-backward-specifications)|
-| input_areas          | `None`       |`list` or `None`          | Areas that receive input. If set to `None`, all neurons will receive inputs. If set to a `list`, list elements should be the index of the areas that receive input. Set it to a list of one element if only one area receives input. | 
-| readout_areas        | `None`       | `list` or `None`         | Areas that readout from. If set to `None`, all neurons will readout from. If set to a `list`, list elements should be the index of the areas that readout from. Set it to a list of one element if only one area readout from. |
+- **`input_areas`** *(list or np.ndarray, optional, default: `None`)*:  
+  Specifies the areas that receive input. Defaults to all areas if `None`.
 
-</div>
+- **`readout_areas`** *(list or np.ndarray, optional, default: `None`)*:  
+  Specifies the areas that send output to the readout layer. Defaults to all areas if `None`.
 
-<div class="table-wrapper" markdown="block">
+## Methods
 
-| Attributes               | Type                       | Description                                |	
-|:-------------------------|:--------------------------:|:-------------------------------------------|
-| n_areas                  | `int`                      | Number of areas                            |
-| node_assignment          | `list`                     | Nodes area assignment                      |
-| hidden_size              | `int`                      | Number of nodes in the HiddenLayer         |
-| input_dim                | `int`                      | Input dimension                            |
-| readout_dim               | `int`                      | Output dimension                           |
-| area_connectivities      | `np.ndarray`               | Area-to-area connectivity matrix. If it is a list in params, it will be transformed into a numpy matrix after initialization                   |
+### `get_input_indices()`
+Returns the indices of neurons in the hidden layer that receive input.
 
-</div>
+**Returns:**  
+- `np.ndarray`: Indices of neurons receiving input.
+
+**Usage:**  
+```python
+input_indices = multi_area.get_input_indices()
+```
+
+---
+
+### `get_non_input_indices()`
+Returns the indices of neurons in the hidden layer that do not receive input.
+
+**Returns:**  
+- `np.ndarray`: Indices of neurons not receiving input.
+
+**Usage:**  
+```python
+non_input_indices = multi_area.get_non_input_indices()
+```
+
+---
+
+### `get_readout_indices()`
+Returns the indices of neurons in the hidden layer that send output to the readout layer.
+
+**Returns:**  
+- `np.ndarray`: Indices of neurons sending readout.
+
+**Usage:**  
+```python
+readout_indices = multi_area.get_readout_indices()
+```
+
+---
+
+### `get_all_area_indices()`
+Returns the indices of neurons in all areas.
+
+**Returns:**  
+- `list[np.ndarray]`: A list of arrays, where each array contains the indices of neurons in a specific area.
+
+**Usage:**  
+```python
+all_area_indices = multi_area.get_all_area_indices()
+```
+
+---
+
+### `get_area_indices(area)`
+Returns the indices of neurons in a specified area.
+
+**Parameters:**
+- `area` *(int or str)*:  
+  Area identifier. If a string, it should match one of the names returned by `get_areas()`.
+
+**Returns:**  
+- `np.ndarray`: Indices of neurons in the specified area.
+
+**Usage:**  
+```python
+area_indices = multi_area.get_area_indices(0)
+```
+
+---
+
+### `get_areas()`
+Returns a list of area names in the format `"area_{i+1}"`.
+
+**Returns:**  
+- `list[str]`: Names of areas.
+
+**Usage:**  
+```python
+areas = multi_area.get_areas()
+```
+
+---
+
+### `get_specs()`
+Returns the specifications of the multi-area network, including inherited specs and multi-area-specific parameters.
+
+**Returns:**  
+- `dict`: Specifications including:
+  - `"dims"`
+  - `"hidden_size"`
+  - `"input_dim"`
+  - `"readout_dim"`
+  - `"n_areas"`
+  - `"area_connectivities"`
+  - `"input_areas"`
+  - `"readout_areas"`
+
+**Usage:**  
+```python
+specs = multi_area.get_specs()
+```
 
 ## Forward Backward Specifications
 RNNs can be implemented in various ways, in this library,
@@ -84,13 +176,13 @@ network_mask.plot_masks()
 ```
 
 ###### Output:
-<p>
+<p align="center">
 <img src="{{ '/assets/images/mask/results/multi_area_input_mask.png' | relative_url }}" width="480">
 </p>
-<p>
+<p align="center">
 <img src="{{ '/assets/images/mask/results/multi_area_hidden_mask.png' | relative_url }}" width="480">
 </p>
-<p>
+<p align="center">
 <img src="{{ '/assets/images/mask/results/multi_area_readout_mask.png' | relative_url }}" width="480">
 </p>
 
@@ -105,12 +197,12 @@ rnn.plot_layers()
 ```
 
 ###### Output:
-<p>
+<p align="center">
 <img src="{{ '/assets/images/mask/results/multi_area_input_weight.png' | relative_url }}" width="500">
 </p>
-<p>
+<p align="center">
 <img src="{{ '/assets/images/mask/results/multi_area_hidden_weight.png' | relative_url }}" width="500">
 </p>
-<p>
+<p align="center">
 <img src="{{ '/assets/images/mask/results/multi_area_readout_weight.png' | relative_url }}" width="500">
 </p>

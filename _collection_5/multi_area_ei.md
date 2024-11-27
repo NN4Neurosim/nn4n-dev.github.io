@@ -1,5 +1,5 @@
 ---
-title: MultiAreaEI
+title: mask.MultiAreaEI
 author: Zhaoze Wang
 date: 2024-06-16
 category: docs
@@ -17,19 +17,57 @@ This class is a child class of `MultiArea`. It will generate a multi-area RNN wi
 
 ## Parameters
 
-### Inherited Parameters
-This class inherits all parameters from `MultiArea`. See [MultiArea]({{ site.baseurl }}/mask/multi_area) for more details.
+- **`exc_pct`** *(float, default: `0.8`)*:  
+  The percentage of excitatory neurons within each area. Must be a value between 0 and 1.
 
-### Other Parameters
-<div class="table-wrapper" markdown="block">
+- **`inter_area_connections`** *(list of 4 booleans, default: `[True, True, True, True]`)*:  
+  Specifies whether to allow specific inter-area connections:
+  1. `exc_exc`: Connections between excitatory neurons in different areas.
+  2. `exc_inh`: Connections from excitatory neurons to inhibitory neurons in different areas.
+  3. `inh_exc`: Connections from inhibitory neurons to excitatory neurons in different areas.
+  4. `inh_inh`: Connections between inhibitory neurons in different areas.
 
-| Parameter                     | Default                 | Type                       | Description                                |
-|:------------------------------|:-----------------------:|:--------------------------:|:-------------------------------------------|
-| ext_pct                       | 0.8                     | `float`                    | Percentage of excitatory neurons              |
-| inter_area_connections        |[True, True, True, True] | `list` (of booleans)       | Allows for what type of inter-area connections. `inter_area_connections` must be a `boolean` list of 4 elements, denoting whether 'exc-exc', 'exc-inh', 'inh-exc', and 'inh-inh' connections are allowed between areas. see [inter-area connections under EI constraints](#inter-area-connections-under-ei-constraints). |
-| inh_readout                   | True                     | `boolean`                 | Whether to readout inhibitory neurons              |
+- **`inh_readout`** *(bool, default: `True`)*:  
+  Determines whether inhibitory neurons contribute to the readout layer.
 
-</div>
+## Methods
+
+### `get_sparsity_masks()`
+Returns sparsity masks as binary versions of the current masks, where:
+- Values of 1 or -1 are replaced with 1.
+- Values of 0 remain 0.
+
+**Returns:**  
+- `List[np.ndarray]`: Sparsity masks for the input, hidden, and readout layers.
+
+**Usage:**  
+```python
+sparsity_masks = multi_area_ei.get_sparsity_masks()
+```
+
+---
+
+### `get_specs()`
+Returns the specifications of the multi-area network, including EI-specific parameters.
+
+**Returns:**  
+- `dict`: Specifications including:
+  - `"dims"`
+  - `"hidden_size"`
+  - `"input_dim"`
+  - `"readout_dim"`
+  - `"n_areas"`
+  - `"area_connectivities"`
+  - `"input_areas"`
+  - `"readout_areas"`
+  - `"exc_pct"`
+  - `"inter_area_connections"`
+  - `"inh_readout"`
+
+**Usage:**  
+```python
+specs = multi_area_ei.get_specs()
+```
 
 ## Inter-Area Connections Under EI Constraints
 Depending on the specific problem you are investigating on, it is possible that you want to eliminate inhibitory connections between areas. Or, you might not want excitatory neurons to connect to inhibitory neurons in other areas. See figure below for different cases of inter-area connections under EI constraints.

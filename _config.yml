@@ -56,24 +56,24 @@ collections:
     name: "Introduction"
   collection_2:
     output: true
-    permalink: /rnn/:path/
-    name: "Recurrent Neural Networks"
-  # collection_3:
-  #   output: true
-  #   permalink: /mlp/:path/
-  #   name: "Multi-Layer Perceptrons"
+    permalink: /layer/:path/
+    name: "nn4n.layer"
+  collection_3:
+    output: true
+    permalink: /model/:path/
+    name: "nn4n.model"
   collection_4:
     output: true
-    permalink: /constraint/:path/
-    name: "Constraints"
+    permalink: /criterion/:path/
+    name: "nn4n.criterion"
   collection_5:
     output: true
     permalink: /mask/:path/
-    name: "Masks"
+    name: "nn4n.mask"
   collection_6:
     output: true
     permalink: /logs/:path/
-    name: "Logs"
+    name: "Change Logs"
 
 page_width: 900px
 

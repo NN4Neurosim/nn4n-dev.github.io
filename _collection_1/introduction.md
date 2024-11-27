@@ -10,10 +10,10 @@ order: 1
 The terms *nodes*, *neurons*, and *units* are used interchangeably in this documentation to refer to the units in the `nn4n` models. In contrast, biological neurons are referred to exclusively as *neurons*.
 
 ## Simplified Network Model
-First, consider a single neuron having a membrane potential $ v $ and a firing rate $ r $. Denote the external input to the neuron at time $ t $ as $ v_{in}(t) $. The dynamics of the membrane potential and firing rate are given by the following equations:
+First, consider a single neuron having a membrane potential $ v $ and a firing rate $ r $. Denote the external input to the neuron at time $ t $ as $ v^{in}(t) $. The dynamics of the membrane potential and firing rate are given by the following equations:
 
 $$
-\tau \frac{d v}{dt} = -v(t) + v_{in}(t) + b
+\tau \frac{d v}{dt} = -v(t) + v^{in}(t) + b
 $$
 
 - $ \tau $: Time constant.
@@ -22,12 +22,12 @@ $$
 Generalizing to the entire network by extending the above equation to vector form:
 
 $$
-\tau \frac{d \mathbf{v}}{dt} = -\mathbf{v}(t) + \mathbf{v}_{in}(t) + \mathbf{b}
+\tau \frac{d \mathbf{v}}{dt} = -\mathbf{v}(t) + \mathbf{v}^{in}(t) + \mathbf{b}
 $$
 
 - $ N_{hid} $: Number of neurons in the network.
 - $ \mathbf{v} \in \mathbb{R}^{N_{hid}} $: Vector of membrane potentials for all neurons in the network.
-- $ \mathbf{v}_{in} \in \mathbb{R}^{N_{hid}} $: Vector of external inputs to all neurons in the network.
+- $ \mathbf{v}^{in} \in \mathbb{R}^{N_{hid}} $: Vector of external inputs to all neurons in the network.
 - $ \mathbf{b} \in \mathbb{R}^{N_{hid}} $: Bias vector.
 
 However, after generalizing to the entire network, at any given moment of time, a neuron receives not only external inputs but also signals from other neurons. The contribution of other neurons is given by $ \mathbf{W}^{rc} \mathbf{r}(t) $, where $ \mathbf{W}^{rc} \in \mathbb{R}^{N_{hid} \times N_{hid}} $ is the recurrent weight matrix denoting the cross-connections between neurons. The vector $ \textbf{r}(t) $ contains the firing rates (post-activation) of all neurons in the network at time $t$. 
@@ -35,7 +35,7 @@ However, after generalizing to the entire network, at any given moment of time, 
 Additionally, consider that the input could be multi-dimensional. Denote the input to the network at time $ t $ as $ \mathbf{u}(t) $, which will be mapped into $\mathbb{R}^{N_{hid}}$ via some input matrix $ \mathbf{W}^{in} \in \mathbb{R}^{N \times N_{in}} $ and $ \mathbf{u}(t) \in \mathbb{R}^{N_{in}} $, where $ N_{in} $ is the number of input dimensions. The dynamics of the network will then be:
 
 $$
-\tau \frac{d v(t)}{dt} = -v(t) + \mathbf{W}^{rc} \mathbf{r}(t) + \mathbf{W}^{in} u(t) + b
+\tau \frac{d \mathbf{v}(t)}{dt} = -\mathbf{v}(t) + \mathbf{W}^{rc} \mathbf{r}(t) + \mathbf{W}^{in} \mathbf{u}(t) + b
 $$
 
 In discrete time, we approximate the derivative with
