@@ -68,7 +68,7 @@ require(["gitbook", "jquery"], function (gitbook, $) {
           // Remove margins and padding from the pre itself to avoid duplication
           $pre.css({
               margin: 0,
-              padding: "10px 20px",
+              padding: 0,
               border: "none",
               background: "none",
           });
