@@ -52,7 +52,14 @@ jobs:
         run: |
           echo "/opt/hostedtoolcache/Ruby/3.2.2/x64/bin" >> $GITHUB_PATH
 
-      # Continue with the rest of the workflow
+      # Install Bundler
+      - name: Install Bundler
+        run: gem install bundler
+
+      # Run bundle install
+      - name: Install Gems
+        run: bundle install
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
