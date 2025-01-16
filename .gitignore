@@ -6,3 +6,4 @@ vendor
 _site/
 _draft/
 .jekyll-cache/
+.DS_Store

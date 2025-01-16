@@ -28,13 +28,13 @@ This project aims to address these issues by improving the biological plausibili
 
 # Network Structures
 ### Vanilla CTRNN
-A simplistic Vanilla CTRNN contains three layers, an input layer, a hidden layer, and an readout layer as depicted below.
+A simplistic Vanilla CTRNN contains three layers: an input layer, a hidden layer, and a readout layer, as depicted below.
 
 <p align="center">
   <img src="{{ '/assets/images/basics/RNN_structure.png' | relative_url }}" width="400" alt="Description of RNN Structure">
 </p>
 
-The yellow nodes represent neurons that project input signals to the hidden layer, the green neurons are in the hidden layer, and the purple nodes represent neurons that read out from the hidden layer neurons. Both input and readout neurons are 'imagined' to be there. I.e., they only project or receives signals and therefore do not have activations and internal states.
+The yellow nodes represent neurons that project input signals to the hidden layer, the green neurons are in the hidden layer, and the purple nodes represent neurons that read out from the hidden layer neurons. Both input and readout neurons are 'imagined' to be there. I.e., they only project or receive signals and, therefore, do not have activations and internal states.
 
 ### Excitatory-Inhibitory Constrained CTRNN
 The implementation of CTRNN also supports Excitatory-Inhibitory constrained continuous-time RNN (EIRNN) similar to what was proposed by H. Francis Song, Guangyu R. Yang, and Xiao-Jing Wang in [Training Excitatory-Inhibitory Recurrent Neural Networks for Cognitive Tasks: A Simple and Flexible Framework](https://doi.org/10.1371/journal.pcbi.1004792)
@@ -58,17 +58,13 @@ A visual illustration of the Multi-Area CTRNN:
 <div style="margin-top: 40px;"></div>
 
 # Papers Using NN4Neurosim
-##### Time Makes Space: Emergence of Place Fields in Networks Encoding Temporally Continuous Sensory Experiences. In *NeurIPS 2024*. [<a href="https://zhaozewang.github.io/projects/time_makes_space/" style="text-decoration: underline;">Project</a>] [<a href="https://openreview.net/pdf?id=ioe66JeCMF" style="text-decoration: underline;">PDF</a>]
-
-<div style="margin-top: 15px;"></div>
-
-<p style="float: right; margin-left: 20px;">
-  <img src="{{ '/assets/images/paper/time_makes_space.png' | relative_url }}" width="500">
-</p>
-
-<p style="text-align: justify;">
-<b>Abstract:</b> The vertebrate hippocampus is believed to use recurrent connectivity in area CA3 to support episodic memory recall from partial cues. This brain area also contains place cells, whose location-selective firing fields implement maps supporting spatial memory. Here we show that place cells emerge in networks trained to remember temporally continuous sensory episodes. We model CA3 as a recurrent autoencoder that recalls and reconstructs sensory experiences from noisy and partially occluded observations by agents traversing simulated arenas. The agents move in realistic trajectories modeled from rodents and environments are modeled as continuously varying, high-dimensional, sensory experience maps (spatially smoothed Gaussian random fields). Training our autoencoder to accurately pattern-complete and reconstruct sensory experiences with a constraint on total activity causes spatially localized firing fields, i.e., place cells, to emerge in the encoding layer.
-</p>
+<h5>
+  Time Makes Space: Emergence of Place Fields in Networks Encoding Temporally Continuous Sensory Experiences
+  <span style="font-weight: normal;">in</span> 
+  <em>NeurIPS 2024</em>
+  [<a href="https://zhaozewang.github.io/projects/time_makes_space/">Project</a>]
+  [<a href="https://openreview.net/pdf?id=ioe66JeCMF">PDF</a>]
+</h5>
 
 <div style="margin-top: 20px;"></div>
 
@@ -81,11 +77,12 @@ A visual illustration of the Multi-Area CTRNN:
   year={2024}
 } 
 ```
+
 <div style="margin-top: 30px;"></div>
 
 
 # Acknowledgement
-I would like to thank my advisor [Dr. Vijay Balasubramanian](https://www.physics.upenn.edu/~vbalasub/Home.html) and [Dr. Pratik Chaudhari](https://pratikac.github.io/) for their guidance and support on this project. I would also like to thank [Dr. Christopher J. Cueva](https://www.metaconscious.org/author/chris-cueva/) for his mentorship in teaching me the fundamentals of modeling neural systems with RNNs.
+I would like to thank [Dr. Christopher J. Cueva](https://www.metaconscious.org/author/chris-cueva/) for his mentorship in the original implementation of this project.
 
 # License
 This project is licensed under the terms of the MIT license.

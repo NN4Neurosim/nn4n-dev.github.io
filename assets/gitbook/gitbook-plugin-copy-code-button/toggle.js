@@ -87,7 +87,7 @@ require(["gitbook", "jquery"], function (gitbook, $) {
               textAlign: "center",
               lineHeight: "0.9rem",
               cursor: "pointer",
-              zIndex: 10,
+              zIndex: 2,
           });
 
           $copyCodeButton.click(function () {
